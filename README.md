@@ -1,3 +1,3 @@
-Simple static website describing who I am!
+Simple single page website describing who I am!
 
 Made with solidjs and tailwind

@@ -18,7 +18,7 @@ export default function Footer() {
                         </a>
                         <div class="bg-black w-0 p-0 g-0 border-r-2 border-gray-200">
                         </div>
-                        <a href="/Kuba_Kedzior_Resume.pdf" class="text-gray-500 hover:text-blue-700 transition-colors">
+                        <a href="/Kuba_Kedzior_Resume.pdf"  class="text-gray-500 hover:text-blue-700 transition-colors" download="Kuba_Kedzior_Resume.pdf">
                              Resume
                         </a>
                 </div>

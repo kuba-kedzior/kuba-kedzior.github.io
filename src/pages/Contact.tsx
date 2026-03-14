@@ -26,7 +26,7 @@ const Contact: Component = () => {
                 <li class="p-1">Based in Minneapolis MN, USA. Open to relocation.</li>
                 <li class="p-1">Available for full-time roles, starting June 2026!</li>
                 <li class="p-1">
-                    <a href="/Kuba_Kedzior_Resume.pdf" class="text-blue-500 hover:underline">
+                    <a href="/Kuba_Kedzior_Resume.pdf" class="text-blue-500 hover:underline" download="Kuba_Kedzior_Resume.pdf">
                         Download my resume!
                     </a>
                 </li>

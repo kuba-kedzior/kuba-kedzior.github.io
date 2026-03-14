@@ -33,26 +33,26 @@ export default function Home() {
                         <li>System Architecture</li>
                         <li>Software Verification & Validation</li>
                         <li>Fault Tolerance</li>
-                        <li>Data Integrity (CRC)</li>
+                        <li>Real-Time Systems</li>
                     </ul>
                 </div>
                 <br/>
                 <div>
                         <h3 class="font-bold text-lg text-gray-800 mt-2">
-                            Tech Stack
+                            Skills
                         </h3>
                         <ul class="list-disc list-inside text-gray-600 space-y-0.5">
-                            <li><strong>Lang:</strong> C++, Rust, Python</li>
-                            <li><strong>Data:</strong> Custom Binary Packing, JSON</li> 
-                            <li><strong>Comms:</strong> UART, Serial Telemetry</li>
+                            <li><strong>Languages:</strong> C++, Rust, Python</li>
+                            <li><strong>Protocols:</strong> UART, SPI, I2C, CAN, BLE</li>
                             <li><strong>Targets:</strong> Linux, STM32 (HAL), Arduino</li>
+                            <li><strong>Tools:</strong> Logic Analyzers, GDB, Valgrind</li>
                         </ul>
 
                 </div>
             </div>
         </div>
         <div class="flex-[5_0_20rem] p-6 flex flex-col align-middle items-center justify-center">
-            <img src={Portrait} alt="Portrait Photo" class="object-cover rounded-full transition-transform"></img>
+            <img src={Portrait} alt="Portrait Photo" class="object-cover rounded-full transition-transform" ></img>
         </div>
     </div>
   );
