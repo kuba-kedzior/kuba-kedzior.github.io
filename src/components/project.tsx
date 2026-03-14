@@ -1,52 +1,95 @@
 import { Component, createSignal, For, Match, Show, Switch } from "solid-js";
 
-interface Props {
-    title: string;
+export interface ProjectImage {
+    src: string;
+    alt?: string;
 }
-const Project: Component<Props> = (Props) => {
-      const [cats, setCats] = createSignal([
-    { id: 'J---aiyznGQ', name: 'Keyboard Cat' },
-    { id: 'z_AbfPXTKms', name: 'Maru' },
-    { id: 'OUtn3pvWmpg', name: 'Henri The Existential Cat' }
-  ]);
-    const [isCollapsed, setIsCollapsed] = createSignal(false);
-    return (
-        <div id="project" class="px-2 mx-auto" style={isCollapsed() ? "padding-bottom: 2rem;" : "padding-bottom: 0rem;"}>
-            <div class="border-b-2 border-gray-400 flex flex-wrap items-end" onClick={() => setIsCollapsed(!isCollapsed())} style="cursor: pointer;">
-                <h2 class="text-2xl font-bold">
-                    <Switch fallback={<span class="px-2 py-1 bg-red-100 text-red-800 text-xs font-mono rounded m-1">Error</span>}>
-                        <Match when={isCollapsed()} >
-                            ➡️
-                        </Match>
-                        <Match when={!isCollapsed()} >
-                            ⬇️
-                        </Match>
-                    </Switch>
-                    {Props.title ? Props.title : "Project Title not set"}
-                </h2>
-                <For each={cats()}>{(cat, i) =>
-                    <Switch fallback={<span class="px-2 py-1 bg-red-100 text-red-800 text-xs font-mono rounded m-1">Error</span>}>
-                        <Match when={i() === 0} >
-                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-mono rounded m-1">Github</span>
-                        </Match>
-                        <Match when={i() === 1} >
-                            <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs font-mono rounded m-1">Rust</span>
-                        </Match>
-                    </Switch>
-                }</For>
-            </div>
-            
-            <Show when={!isCollapsed()}>
-                <div class="flex flex-wrap items-center mb-4">
-                    <img src="" alt="Project Image" class="mt-4 w-full h-auto rounded-lg max-w-5xl flex-[1_0_50%] min-w-80"/>
-                    <p class="text-gray-700 flex-[5_0_50%] min-w-80">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat est eu sagittis tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque euismod enim vel faucibus. Duis diam tellus, tristique quis odio ac, cursus pellentesque nulla. Sed ornare consequat sollicitudin. Sed ac purus id ex pellentesque finibus. Nunc sollicitudin ex at tortor feugiat tempor. Nullam maximus maximus eros a dignissim. Proin ullamcorper mi erat, sit amet varius erat pulvinar ac. Proin ut tellus ut augue dictum convallis. Fusce facilisis dolor augue, eget condimentum nulla efficitur at. Duis tempus nunc justo, in gravida nibh gravida vel. Vivamus viverra accumsan ullamcorper. Etiam dictum consectetur libero, tincidunt efficitur velit posuere vitae. Morbi iaculis sed risus vitae aliquam. Vestibulum ullamcorper justo quis libero volutpat, quis consectetur neque tempus. Vestibulum mattis orci metus, eu ullamcorper leo molestie vel. Nullam eu nunc suscipit, imperdiet felis ac, blandit mi. Sed lacinia efficitur tristique. Donec euismod eu nibh et cursus. Duis ornare ipsum quam, in porta lacus rutrum ac. Curabitur a eros nec tellus laoreet hendrerit. Cras sed cursus nulla, id facilisis dolor. Duis vulputate velit purus, eu dapibus risus suscipit quis. Integer in risus mauris. Vivamus elit urna, fermentum ut bibendum et, convallis a nisi. Sed vestibulum rutrum tellus in placerat. Sed facilisis risus tellus, quis vehicula eros suscipit in. Morbi a molestie libero, ut cursus massa.</p>
-                    <img src="" alt="Project Image" class="mt-4 w-full h-auto rounded-lg max-w-5xl flex-[1_0_50%] min-w-80"/>
-                    <img src="" alt="Project Image" class="mt-4 w-full h-auto rounded-lg max-w-5xl flex-[1_0_50%] min-w-80"/>
-                    <img src="" alt="Project Image" class="mt-4 w-full h-auto rounded-lg max-w-10xl flex-[1_0_50%] min-w-80"/>
-                </div>
-            </Show>
 
+export interface ProjectProps {
+    title: string;
+    skills?: string[];
+    images?: ProjectImage[];
+    thumbnails?: ProjectImage[];
+    subheadings?: string[];
+    descriptions?: string[];
+    links?: { label: string; href: string }[];
+}
+
+const Project: Component<ProjectProps> = (props) => {
+
+    return (
+        <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+
+            <h2 class="text-2xl font-bold flex items-center gap-2">
+                {props.title}
+            </h2>
+            <div class="mt-6 grid gap-6">
+                <Show when={props.skills?.length ?? 0 > 0}>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                            Skills
+                        </h3>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <For each={props.skills}>
+                                {(skill) => (
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">
+                                        {skill}
+                                    </span>
+                                )}
+                            </For>
+                        </div>
+                    </div>
+                </Show>
+                <Show when={props.links?.length ?? 0 > 0}>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                            Links
+                        </h3>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <For each={props.links}>
+                                {(link) => (
+                                    <a
+                                        href={link.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded hover:bg-blue-200"
+                                    >
+                                        {link.label}
+                                    </a>
+                                )}
+                            </For>
+                        </div>
+                    </div>
+                </Show>
+                <For each={props.thumbnails}>
+                    {(image) => (
+                        <img
+                            src={image.src}
+                            alt={image.alt ?? props.title}
+                            class="w-full h-auto rounded-lg shadow-sm"
+                        />
+                    )}
+                </For>
+                <For each={props.subheadings}>
+                    {(subheading, i) => (
+                        <div>
+                            <h3 class="text-lg font-semibold">{subheading}</h3>
+                            <Show when={props.images?.length ?? 0 > i()}>
+                                <img
+                                    src={props.images?.[i()].src}
+                                    alt={props.images?.[i()].alt ?? props.title}
+                                    class="w-full h-auto rounded-lg shadow-sm"
+                                />
+                            </Show>
+                            <p class="text-gray-700 mt-2 whitespace-pre-line">
+                                {props.descriptions?.[i()] ?? ""}
+                            </p>
+                        </div>
+                    )}
+                </For>
+            </div>
         </div>
     );
-}
+};
+
 export default Project;

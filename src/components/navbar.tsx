@@ -1,7 +1,7 @@
 import { createSignal, onMount } from "solid-js";
 
 export default function Navbar() {
-    const words = [["Home","/"],["About Me","/about"], ["Contact","/contact"]];
+    const words = [["Home","/"],["About Me","/about"], ["Contact","/contact"], ["Portfolio","/portfolio"]];
 
     let containerRef = undefined;
     let highlightRef = undefined;
