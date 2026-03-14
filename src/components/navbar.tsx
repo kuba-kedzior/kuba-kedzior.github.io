@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <nav
       ref={containerRef}
-      class="highlight-container flex flex-wrap border-b-2 border-gray-400 p-2 m-2"
+      class="highlight-container flex border-b-2 border-gray-400 p-2 m-2"
     >
       <div ref={highlightRef} class="highlight" />
       {words.map((value, i) => (
