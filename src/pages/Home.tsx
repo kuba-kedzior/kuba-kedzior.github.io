@@ -13,7 +13,7 @@ export default function Home() {
                         Kuba Kedzior
                     </h1>
                     <p class="text-sm font-semibold text-blue-600 uppercase tracking-wide mt-1">
-                        Expected Grad: May 2025 • Open to Relocation • US Citizen
+                        Recent Grad • Open to Relocation • US Citizen
                     </p>
                     <br/>
                     <h3 class="font-bold text-xl text-left max-w-lg mt-3 text-gray-800">
